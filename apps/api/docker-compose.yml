@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  codingApi:
+    image: postgres:13
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: coding_api
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  email        String?  @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  workspaces   WorkspaceMember[]
+  files        File[]
+  codeSnippets CodeSnippet[]
+}
+
+model Workspace {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  members WorkspaceMember[]
+  files   File[]
+}
+
+model WorkspaceMember {
+  workspaceId Int
+  userId      Int
+  role        String?
+
+  // Relations
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id(name: "WorkspaceMemberId", [workspaceId, userId])
+}
+
+model File {
+  id           Int      @id @default(autoincrement())
+  workspaceId  Int
+  userId       Int
+  filename     String
+  type         String
+  parentFolder String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  workspace Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  snippets  CodeSnippet[]
+}
+
+model CodeSnippet {
+  id        Int      @id @default(autoincrement())
+  fileId    Int
+  userId    Int
+  lineNo    Int
+  code      String
+  language  String
+  createdAt DateTime @default(now())
+
+  // Relations
+  file File @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

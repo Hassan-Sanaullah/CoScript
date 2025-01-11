@@ -1,0 +1,172 @@
+/* Global styles */
+.login-page {
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0px;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../public/background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-card {
+  color: white;
+  position: absolute;
+  margin: 0 auto;
+  border-radius: 20px;
+  background: transparent;
+  background-image: linear-gradient(
+      45deg,
+      rgba(225, 225, 255, 0.1),
+      rgba(68, 68, 68, 0.7)
+  );
+  backdrop-filter: blur(10px);
+  width: 600px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 90px;
+  margin-top: 70px;
+}
+
+/* Set the same width for input and button */
+.username, .password,
+.login-button {
+  width: 425px; /* Set same width for both input fields and button */
+}
+
+.username, .password {
+  border: 2px gray solid;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+  font-size: 15px;
+  padding: 10px 10px;
+  margin-top: 30px;
+}
+
+.username::placeholder, .password::placeholder {
+  color: gray;
+}
+
+.login-button {
+  border: none;
+  border-radius: 10px;
+  background-color: #d83c31;
+  color: white;
+  font-size: 20px;
+  padding: 10px 10px;
+  margin-top: 60px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.login-button:hover {
+  background-color: white;
+  color: #d83c31;
+}
+
+.forgot-password-link {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  top: 10px;
+}
+
+.forgot-password-link:hover {
+  color: #d83c31;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.create-account-link {
+  text-decoration: none;
+  color: white;
+  margin-left: 10px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and below (max width 768px) */
+@media (max-width: 768px) {
+  .login-card {
+      width: 90%;
+      height: auto;
+      padding: 20px;
+  }
+
+  .logo {
+      width: 70px;
+      margin-top: 30px;
+  }
+
+  .username, .password,
+  .login-button {
+      width: 90%; /* Adjust width for smaller screens */
+      font-size: 14px;
+      padding: 8px;
+  }
+
+  .login-button {
+      margin-top: 40px;
+  }
+
+  p {
+      font-size: 14px;
+  }
+
+  .create-account-link {
+      font-size: 14px;
+  }
+}
+
+/* For mobile screens and below (max width 480px) */
+@media (max-width: 480px) {
+  .login-card {
+      width: 90%;
+      height: auto;
+      padding: 15px;
+  }
+
+  .logo {
+      width: 60px;
+      margin-top: 20px;
+  }
+
+  .username, .password,
+  .login-button {
+      width: 100%; /* Adjust to 100% width for mobile screens */
+      font-size: 14px;
+      padding: 10px;
+  }
+
+  .login-button {
+      margin-top: 40px;
+  }
+
+  p {
+      font-size: 12px;
+  }
+
+  .create-account-link {
+      font-size: 12px;
+  }
+}

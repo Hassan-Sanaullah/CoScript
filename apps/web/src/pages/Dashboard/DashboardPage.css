@@ -1,0 +1,150 @@
+.dashboard-page {
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.dashboard-sidebar {
+    width: 250px;
+    background-color: #0f0f0f;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    height: 100%;
+    text-align: center;
+}
+
+.dashboard-sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-sidebar input{
+  border: 2px gray solid;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+  font-size: 15px;
+  padding: 10px 10px;
+  margin: 30px 0px;
+}
+
+.dashboard-sidebar button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    border: none;
+    background-color: #d83c31;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dashboard-profile {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.projects-section {
+    margin-top: 20px;
+}
+
+.projects-section h3 {
+    margin-bottom: 10px;
+}
+
+.project-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0f0f0f;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.join-button {
+    border: none;
+    border-radius: 10px;
+    background-color: #d83c31;
+    color: white;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+.join-button:hover, .dashboard-sidebar button:hover, .join-session-button:hover {
+    background-color: white;
+    color: #d83c31;
+}
+
+.collaborators-container {
+    margin-top: 30px;
+  }
+  
+  .collaborators-title {
+    margin-bottom: 10px;
+  }
+  
+  .collaborator-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .collaborator-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .collaborator-name {
+    font-size: 16px;
+  }
+  
+  .collaborator-status {
+    font-size: 14px;
+    color: #7f8c8d;
+  }
+  
+  .join-session-button {
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+
+    border-radius: 10px;
+    background-color: #d83c31;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+  }
+

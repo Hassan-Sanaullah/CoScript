@@ -1,0 +1,361 @@
+.home-page {
+    background-color: #292929;
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    height: 80vh;
+    overflow-y: scroll;
+
+    margin: 0;
+    height: 100vh; /* Ensure the body takes up the full viewport height */
+
+    background-image: url("../../../public/bg-img.png");
+    background-size: cover;
+    background-position: center center;
+}
+.main-content {
+    height: auto; /* Let content take natural space */
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: flex-start;
+    gap: 150px;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #a0332c;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+}
+
+.navbar-title {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.navbar-title h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.navbar-buttons-container {
+    display: flex;
+    gap: 5vw;
+}
+
+.navbar-button {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    position: relative;
+}
+
+/* Add the smooth underline under navbar buttons when hover */
+.navbar-button::after {
+    content: ""; /* Empty content for the pseudo-element */
+    position: absolute; /* Position it relative to the link */
+    bottom: 0; /* Align it to the bottom of the link */
+    left: 0; /* Align it to the left */
+    width: 0; /* Start with no width (invisible) */
+    height: 3px; /* Underline thickness */
+    background-color: white; /* Underline color */
+    transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+/* On hover, expand the underline */
+.navbar-button:hover::after {
+    width: 100%; /* Expand the underline to full width */
+}
+
+/* Card 1 styling */
+.card1 {
+    width: 40%;
+    height: 40%;
+    background-color: transparent;
+    color: white;
+
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: flex-start;
+    order: 0;
+    /* Add margin for spacing from the top and left */
+    margin-top: 15%;
+    margin-left: 15%;
+}
+.card1 h1 {
+    font-size: 500%;
+    margin: 0;
+}
+
+.signupPage-button {
+    background-color: transparent;
+    border: 2px white solid;
+    padding: 8px 30px;
+    width: 250px;
+    color: white;
+    margin: 10px 0px 0px 10%;
+}
+
+.signupPage-button:hover {
+    border-color: #a0332c;
+    color: #a0332c;
+}
+
+.card1 h3,
+.card2 h3 {
+    margin: 10px 10%;
+}
+
+/* Card 2 styling */
+.card2 {
+    color: white;
+    width: 60%;
+    height: 500px;
+    padding: 100px 0px 0px 110px;
+    border-radius: 10px;
+
+    /* Base transparent background with slight color */
+    background: transparent;
+
+    /* Create a gradient with a shiny effect */
+    background-image: linear-gradient(
+        45deg,
+        rgba(225, 225, 255, 0.1),
+        rgba(68, 68, 68, 0.7)
+    );
+
+    /* Optional: Apply blur effect to simulate the glossy look */
+    backdrop-filter: blur(10px);
+
+    /* Optional: Add a soft box-shadow for depth */
+    /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); */
+
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    margin-bottom: 15%;
+}
+
+.card3 {
+    color: white;
+    border-radius: 10px;
+    margin: 0px 3%;
+    width: 350px;
+    padding: 50px;
+
+    /* Base transparent background with slight color */
+    background: transparent;
+
+    /* Create a gradient with a shiny effect */
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(68, 68, 68, 0.7)
+    );
+
+    /* Optional: Apply blur effect to simulate the glossy look */
+    backdrop-filter: blur(10px);
+}
+
+.home-footer {
+    width: 100%;
+    border-top: 1px solid white;
+    background-color: #a0332c;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(160, 51, 44, 1) 16%
+    );
+    padding: 20px 0;
+    text-align: center;
+}
+
+.home-footer p {
+    margin: 0;
+    font-size: 1vw;
+}
+
+/* Mobile Devices */
+@media (max-width: 767px) {
+    .home-page {
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .main-content {
+        gap: 50px;
+        padding: 20px;
+    }
+
+    .card1,
+    .card2 {
+        width: 90%; /* Make cards take up more width */
+        margin: 0 auto; /* Center the cards */
+        padding: 20px;
+    }
+
+    .card1 h1 {
+        font-size: 300%;
+    }
+
+    .signupPage-button {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    .card2 {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    /* Section for Cards */
+    .section {
+        display: flex;             /* Ensure .section is a flex container */
+        flex-direction: column;    /* Stack the cards vertically */
+        align-items: center;       /* Center the cards horizontally */
+        gap: 20px;                 /* Space between the cards */
+        margin-bottom: 15%;
+    }
+
+    .card3 {
+        width: 100%;               /* Make cards take up full width on small screens */
+        margin: 0;                 /* Remove any margin */
+        padding: 20px;             /* Ensure padding is adequate */
+        border-radius: 10px;       /* Ensure consistent styling */
+    }
+
+    .navbar {
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-buttons-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar-button {
+        font-size: 16px;
+    }
+
+    .home-footer {
+        font-size: 3vw;
+        padding: 15px 0;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .main-content {
+        gap: 100px;
+    }
+
+    .card1 {
+        width: 60%;
+        margin: 10% auto;
+    }
+
+    .card2 {
+        width: 80%;
+        height: auto;
+        padding: 80px 0;
+        margin: 0 auto;
+    }
+
+    .section {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .card3 {
+        width: 45%;
+    }
+
+    .navbar {
+        padding: 15px;
+    }
+
+    .navbar-button {
+        font-size: 18px;
+    }
+
+    .home-footer {
+        font-size: 4vw;
+        padding: 20px 0;
+    }
+}
+
+/* Large Screens (desktops) */
+@media (min-width: 1200px) {
+    .home-page {
+        background-size: cover;
+    }
+
+    .main-content {
+        gap: 150px;
+    }
+
+    .card1 {
+        width: 40%;
+        margin: 15% 15%;
+    }
+
+    .card2 {
+        width: 60%;
+        height: 500px;
+        padding: 100px 0px 0px 110px;
+    }
+
+    .section {
+        margin-bottom: 15%;
+    }
+
+    .card3 {
+        width: 350px;
+        padding: 50px;
+    }
+
+    .navbar {
+        padding: 10px 50px;
+    }
+
+    .navbar-button {
+        font-size: 20px;
+    }
+
+    .home-footer {
+        font-size: 1vw;
+        padding: 20px 0;
+    }
+}

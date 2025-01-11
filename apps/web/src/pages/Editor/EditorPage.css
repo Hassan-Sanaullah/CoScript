@@ -1,0 +1,120 @@
+.editor-page {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #0f0f0f;
+
+}
+
+.header {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #a0332c;
+    color: white;
+    font-size: 150%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    background-color: #a0332c;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: baseline;
+}
+
+.menu li {
+    position: relative; /* Ensure dropdown is positioned relative to menu item */
+  }
+  
+  .menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+
+.workspace-info {
+    margin-left: 40%; 
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+}
+
+.editor-div {
+    display: flex;
+    flex-grow: 1;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    background-color: #0f0f0f;
+    color: white;
+    border-right: 1px solid gray;
+}
+
+.explorer, .connections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    /* padding: 0px 10px; */
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.sidebar-heading {
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 5px;
+    top:0;
+    background-color: #0f0f0f;
+    position: sticky;
+}
+
+.filelabel {
+    padding-left: 10%;
+    margin-bottom: 5px;
+}
+
+.filelabel:hover {
+    background-color: #1b1b1b;
+}
+
+.file-icon {
+    display: inline;
+}
+
+.editor {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    background-color: #2d2d2d;
+    color: white;
+    padding: 5px;
+    border-left: 1px solid gray;
+}
+
+/* Disable text selection */
+.menu,
+.sidebar,
+.header {
+    -webkit-user-select: none; /* Safari/Chrome */
+    -moz-user-select: none; /* Firefox */
+    user-select: none; /* Standard syntax */
+}

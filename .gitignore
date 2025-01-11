@@ -1,0 +1,75 @@
+# Node modules (general for all apps/packages)
+**/node_modules
+
+# separate git files
+apps/api/.git
+apps/web/.git
+apps/api/.gitignore
+apps/web/.gitignore
+
+# Build outputs (common build outputs, including React and NestJS)
+**/dist
+**/build
+**/dist-ssr
+
+# TurboRepo build cache
+/.turbo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS-specific files
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Temporary files and folders
+.temp
+.tmp
+
+# Runtime data (pids, lock files)
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostic reports (Node.js)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Specific IDE/editor files (optional)
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
