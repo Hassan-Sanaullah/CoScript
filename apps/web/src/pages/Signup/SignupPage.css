@@ -1,63 +1,62 @@
 /* Global styles */
 .signup-page {
     color: white;
-    font-family: "Lato", sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: 400;
     font-style: normal;
     margin: 0px;
     overflow: hidden;
-  }
-  
-  .app-container {
+}
+
+.app-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../../../public/background.jpg");
+    background-image: url('../../../public/background.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     width: 100%;
     height: 100vh;
-  }
+}
 
-  .error-message{
+.error-message {
     color: red;
-  }
+}
 
-  .error-message p {
+.error-message p {
     margin: 0px;
-  }
+}
 
-  .success-message{
+.success-message {
     text-align: center;
     margin-bottom: 20px;
-  }
+}
 
-  .signup-card {
+.signup-card {
     color: white;
     position: absolute;
     margin: 0 auto;
     border-radius: 20px;
     background: transparent;
-    background-image: linear-gradient(
-        45deg,
-        rgba(225, 225, 255, 0.1),
-        rgba(68, 68, 68, 0.7)
-    );
+    background-image: linear-gradient(45deg, rgba(225, 225, 255, 0.1), rgba(68, 68, 68, 0.7));
     backdrop-filter: blur(10px);
     width: 600px;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .logo {
+}
+
+.logo {
     width: 90px;
     margin-top: 70px;
-  }
-  
-  .username, .email, .password, .confirm-password {
+}
+
+.username,
+.email,
+.password,
+.confirm-password {
     border: 2px gray solid;
     border-radius: 10px;
     background-color: transparent;
@@ -65,23 +64,26 @@
     font-size: 15px;
     padding: 10px 10px;
     margin-top: 30px;
-  }
-  
-  .username::placeholder,
-  .email::placeholder,
-  .password::placeholder,
-  .confirm-password::placeholder {
+}
+
+.username::placeholder,
+.email::placeholder,
+.password::placeholder,
+.confirm-password::placeholder {
     color: gray;
-  }
-  
-  /* Set the same width for inputs and button */
-  .username, .email, .password, .confirm-password,
-  .signup-button {
+}
+
+/* Set the same width for inputs and button */
+.username,
+.email,
+.password,
+.confirm-password,
+.signup-button {
     width: 425px; /* Same width for input and button */
-  }
-  
-  /* Signup button */
-  .signup-button {
+}
+
+/* Signup button */
+.signup-button {
     border: none;
     border-radius: 10px;
     background-color: #d83c31;
@@ -89,95 +91,102 @@
     font-size: 20px;
     padding: 10px 10px;
     margin-top: 60px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
     text-align: center;
-  }
-  
-  .signup-button:hover {
+}
+
+.signup-button:hover {
     background-color: white;
     color: #d83c31;
-  }
-  
-  p {
+}
+
+p {
     text-align: center;
     margin-top: 20px;
-  }
-  
-  .login-link {
+}
+
+.login-link {
     text-decoration: none;
     color: white;
     margin-left: 10px;
-  }
-  
-  .login-link:hover {
+}
+
+.login-link:hover {
     color: #d83c31;
-  }
-  
-  /* Media Queries for Responsiveness */
-  
-  /* For tablets and below (max width 768px) */
-  @media (max-width: 768px) {
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and below (max width 768px) */
+@media (max-width: 768px) {
     .signup-card {
         width: 90%;
         height: auto;
         padding: 20px;
     }
-  
+
     .logo {
         width: 70px;
         margin-top: 30px;
     }
-  
-    .username, .email, .password, .confirm-password,
+
+    .username,
+    .email,
+    .password,
+    .confirm-password,
     .signup-button {
         width: 90%; /* Adjust width to fit on smaller screens */
         font-size: 14px;
         padding: 8px;
     }
-  
+
     .signup-button {
         margin-top: 40px;
     }
-  
+
     p {
         font-size: 14px;
     }
-  
+
     .login-link {
         font-size: 14px;
     }
-  }
-  
-  /* For mobile screens and below (max width 480px) */
-  @media (max-width: 480px) {
+}
+
+/* For mobile screens and below (max width 480px) */
+@media (max-width: 480px) {
     .signup-card {
         width: 90%;
         height: auto;
         padding: 15px;
     }
-  
+
     .logo {
         width: 60px;
         margin-top: 20px;
     }
-  
-    .username, .email, .password, .confirm-password,
+
+    .username,
+    .email,
+    .password,
+    .confirm-password,
     .signup-button {
         width: 100%; /* Adjust width to 100% for even smaller screens */
         font-size: 14px;
         padding: 10px;
     }
-  
+
     .signup-button {
         margin-top: 40px;
     }
-  
+
     p {
         font-size: 12px;
     }
-  
+
     .login-link {
         font-size: 12px;
     }
-  }
-  
+}

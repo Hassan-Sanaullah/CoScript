@@ -1,4 +1,4 @@
-import FileLabel from "./FileLabel";
+import FileLabel from './FileLabel';
 
 interface FileItem {
     id: number;
@@ -14,23 +14,22 @@ interface FileItem {
 interface Props {
     files: FileItem[];
     sendDataToEditorPage: (fileId: number) => void;
-    connectedUsers: []
+    connectedUsers: [];
+    inviteLink: string | undefined
 }
 
-function Sidebar({ files = [], sendDataToEditorPage, connectedUsers }: Props) {
-    
+function Sidebar({ files = [], sendDataToEditorPage, connectedUsers, inviteLink }: Props) {
     return (
         <div className="sidebar">
             <div className="explorer">
                 <div className="sidebar-heading">Explorer</div>
-
                 {files.map((file: any) => (
                     <FileLabel
                         key={file.id}
                         fileId={file.id}
                         type={file.type}
                         parent={file.parentFolder}
-                        sendDataToSidebar={sendDataToEditorPage} 
+                        sendDataToSidebar={sendDataToEditorPage}
                     >
                         {file.filename}
                     </FileLabel>
@@ -39,8 +38,15 @@ function Sidebar({ files = [], sendDataToEditorPage, connectedUsers }: Props) {
             <div className="connections">
                 <div className="sidebar-heading">Connections</div>
                 {connectedUsers.map((user, index) => (
-                <p key={index}>{user}</p>
-    ))}
+                    <p key={index}>{user}</p>
+                ))}
+                
+                
+                {inviteLink && (
+                    <div className="invite-link-container">
+                        <span>Invite Code: {inviteLink}</span>
+                    </div>
+                )}
             </div>
         </div>
     );

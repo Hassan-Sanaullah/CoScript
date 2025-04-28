@@ -31,11 +31,16 @@ export class EditorController {
         return fileContent;
     }
 
-    @Post('make-file')
-    makeNewFile(
-        @GetUser('id') userId: number,
-        @Body() createFileDto: CreateFileDto
-    ) {
-        return this.editorService.makeNewFile(userId, createFileDto);
-    }
+    // @Get('invite/:workspaceId')
+    // async getInviteLink(@Param('workspaceId') workspaceId: string) {
+    //     return this.editorService.getInviteLink(workspaceId);
+    // }
+
+    // @Post('make-file')
+    // makeNewFile(
+    //     @GetUser('id') userId: number,
+    //     @Body() createFileDto: CreateFileDto
+    // ) {
+    //     return this.editorService.makeNewFile(userId, createFileDto);
+    // }
 }

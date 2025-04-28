@@ -3,21 +3,21 @@ import React, { ReactNode, useState } from 'react';
 interface Props {
     isOpen: boolean;
     onClose: () => void;
-    onSubmit: (input: string) => void;
+    onSubmit: (input1: string, input2: string) => void;
 
     // children = {heading, textbox title 1, textbox title 2 .....}
     children: ReactNode;
 }
 
 function CustomPrompt({ isOpen, onClose, onSubmit, children }: Props) {
-    const [input, setInput] = useState('');
-    //   const [input2, setInput2] = useState('');
+    const [input1, setInput1] = useState('');
+    const [input2, setInput2] = useState('');
     //   const [input3, setInput3] = useState('');
 
     if (!isOpen) return null;
 
     const handleSubmit = () => {
-        onSubmit(input);
+        onSubmit(input1, input2);
         onClose();
     };
 
@@ -25,14 +25,21 @@ function CustomPrompt({ isOpen, onClose, onSubmit, children }: Props) {
         <div style={overlayStyle}>
             <div style={modalStyle}>
                 <h3>{children}</h3>
-                <input type='text' value={input} onChange={(e) => setInput(e.target.value)} style={inputStyle} />
-                {/* <input
-          type="text"
-          placeholder="Input 2"
-          value={input2}
-          onChange={(e) => setInput2(e.target.value)}
-          style={inputStyle}
-        />
+                <input
+                    type='text'
+                    placeholder='Name'
+                    value={input1}
+                    onChange={(e) => setInput1(e.target.value)}
+                    style={inputStyle}
+                />
+                <input
+                    type='text'
+                    placeholder='Description'
+                    value={input2}
+                    onChange={(e) => setInput2(e.target.value)}
+                    style={inputStyle}
+                />
+                {/*
         <input
           type="text"
           placeholder="Input 3"

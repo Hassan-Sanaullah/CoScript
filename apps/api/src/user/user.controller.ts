@@ -14,8 +14,4 @@ export class UserController {
         return this.userService.getDashboardInfo(userId);
     }
 
-    @Patch('update')
-    editUserInfo(@GetUser('id') userId: number, @Body() dto: EditUserDto) {
-        return this.userService.EditUserInfo(userId, dto);
-    }
 }

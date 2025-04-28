@@ -1,6 +1,6 @@
-import { Editor, type Monaco } from "@monaco-editor/react";
-import GitHubDarkClassic from "../themes/githubDarkClassic.json";
-import { useEffect, useState, useRef } from "react";
+import { Editor, type Monaco } from '@monaco-editor/react';
+import GitHubDarkClassic from '../themes/githubDarkClassic.json';
+import { useEffect, useState, useRef } from 'react';
 
 interface FileContent {
     id: number;
@@ -20,37 +20,34 @@ interface Props {
 }
 
 function MyMonacoEditor({ content = [], workspaceId, fileId, socket }: Props) {
-    const [editorContent, setEditorContent] = useState<string>("");
-    const [language, setLanguage] = useState<string>("typescript");
+    const [editorContent, setEditorContent] = useState<string>('');
+    const [language, setLanguage] = useState<string>('typescript');
     const editorRef = useRef<any>(null);
     const applyingRemoteUpdate = useRef(false);
 
     // Helper to concatenate snippets into a single string
     const getFileContent = (snippets: FileContent[]) => {
         if (!Array.isArray(snippets)) {
-            console.error(
-                "Expected snippets to be an array but received:",
-                snippets
-            );
-            return "";
+            console.error('Expected snippets to be an array but received:', snippets);
+            return '';
         }
         return snippets
             .sort((a, b) => a.lineNo - b.lineNo)
             .map((snippet) => snippet.code)
-            .join("\n");
+            .join('\n');
     };
 
     // Update editor content and language when content prop changes
     useEffect(() => {
         const newContent = getFileContent(content);
         setEditorContent(newContent);
-        setLanguage(content.length > 0 ? content[0].language : "typescript");
+        setLanguage(content.length > 0 ? content[0].language : 'typescript');
     }, [content]);
 
     // Configure and mount Monaco editor
     const handleEditorDidMount = (monaco: Monaco) => {
-        monaco.editor.defineTheme("GitHubDarkClassic", {
-            base: "vs-dark",
+        monaco.editor.defineTheme('GitHubDarkClassic', {
+            base: 'vs-dark',
             inherit: true,
             ...GitHubDarkClassic,
         });
@@ -64,45 +61,37 @@ function MyMonacoEditor({ content = [], workspaceId, fileId, socket }: Props) {
     useEffect(() => {
         if (!socket || !workspaceId || fileId === null) return;
 
-        socket.on(
-            "receiveChange",
-            (data: { workspaceId: string; fileId: number; text: string }) => {
-                // Only update content if the workspaceId and fileId match
-                console.log(data)
-                if (
-                    data.workspaceId === workspaceId &&
-                    data.fileId === fileId
-                ) {
-                    const editor = editorRef.current;
-                    if (!editor || applyingRemoteUpdate.current) return;
+        socket.on('receiveChange', (data: { workspaceId: string; fileId: number; text: string }) => {
+            // Only update content if the workspaceId and fileId match
+            console.log(data);
+            if (data.workspaceId === workspaceId && data.fileId === fileId) {
+                const editor = editorRef.current;
+                if (!editor || applyingRemoteUpdate.current) return;
 
-                    const currentContent = editor.getValue();
-                    if (currentContent !== data.text) {
-                        applyingRemoteUpdate.current = true;
-                        editor.executeEdits(null, [
-                            {
-                                range: editor.getModel().getFullModelRange(),
-                                text: data.text,
-                            },
-                        ]);
-                        applyingRemoteUpdate.current = false;
-                    }
+                const currentContent = editor.getValue();
+                if (currentContent !== data.text) {
+                    applyingRemoteUpdate.current = true;
+                    editor.executeEdits(null, [
+                        {
+                            range: editor.getModel().getFullModelRange(),
+                            text: data.text,
+                        },
+                    ]);
+                    applyingRemoteUpdate.current = false;
                 }
             }
-        );
+        });
 
         return () => {
-            socket.off("receiveChange");
+            socket.off('receiveChange');
         };
     }, [socket, workspaceId, fileId]);
 
     // Switch file when fileId prop changes
     useEffect(() => {
         if (fileId !== null && socket && workspaceId) {
-            socket.emit("switchFile", { workspaceId, fileId });
-            console.log(
-                `Switched to file: ${fileId} in workspace: ${workspaceId}`
-            );
+            socket.emit('switchFile', { workspaceId, fileId });
+            console.log(`Switched to file: ${fileId} in workspace: ${workspaceId}`);
         }
     }, [fileId, workspaceId, socket]);
 
@@ -117,7 +106,7 @@ function MyMonacoEditor({ content = [], workspaceId, fileId, socket }: Props) {
                 const cursorPosition = editor.getPosition(); // { lineNumber, column }
                 const lineNo = cursorPosition ? cursorPosition.lineNumber : 1; // Default to line 1 if undefined
 
-                console.log("Emitting change to WebSocket:", {
+                console.log('Emitting change to WebSocket:', {
                     workspaceId,
                     fileId,
                     lineNo,
@@ -126,10 +115,10 @@ function MyMonacoEditor({ content = [], workspaceId, fileId, socket }: Props) {
                 });
 
                 // Emit the change with the line number
-                socket.emit("sendChange", {
+                socket.emit('sendChange', {
                     workspaceId: workspaceId,
                     fileId: fileId,
-                    lineNo: lineNo, 
+                    lineNo: lineNo,
                     code: newCode,
                     language: language,
                 });
@@ -139,27 +128,27 @@ function MyMonacoEditor({ content = [], workspaceId, fileId, socket }: Props) {
 
     return (
         <Editor
-            width="100%"
-            height="93vh"
+            width='100%'
+            height='93vh'
             language={language}
             value={editorContent}
-            theme="GitHubDarkClassic"
+            theme='GitHubDarkClassic'
             beforeMount={handleEditorDidMount}
             onMount={handleEditorMount}
-            onChange={(value) => {
+            onChange={(value:any) => {
                 if (value !== editorContent) {
-                    setEditorContent(value || "");
-                    handleCodeChange(value || "");
+                    setEditorContent(value || '');
+                    handleCodeChange(value || '');
                 }
             }}
             options={{
                 fontSize: 14,
-                fontFamily: "Jetbrains-Mono",
+                fontFamily: 'Jetbrains-Mono',
                 fontLigatures: true,
-                wordWrap: "on",
+                wordWrap: 'on',
                 minimap: { enabled: true },
                 bracketPairColorization: { enabled: true },
-                cursorBlinking: "expand",
+                cursorBlinking: 'expand',
                 formatOnPaste: true,
                 suggest: { showFields: false, showFunctions: false },
             }}

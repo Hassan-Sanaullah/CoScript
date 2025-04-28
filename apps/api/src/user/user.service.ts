@@ -49,32 +49,4 @@ export class UserService {
             workspaces, // Attach the reshaped workspaces data
         };
     }
-
-    async EditUserInfo(userId, dto) {
-        const userExists = await this.prisma.user.findUnique({
-            where: { id: userId },
-        });
-
-        if (!userExists) {
-            throw new NotFoundException('User not found');
-        }
-
-        const userUpdate = await this.prisma.user.update({
-            where: { id: userId },
-            data: {
-                username: dto.username,
-                passwordHash: dto.password,
-                email: dto.email,
-            },
-        });
-
-        if (!userUpdate) {
-            throw new InternalServerErrorException(
-                'Failed to update user information'
-            );
-        }
-
-        delete userUpdate.passwordHash;
-        return userUpdate;
-    }
 }

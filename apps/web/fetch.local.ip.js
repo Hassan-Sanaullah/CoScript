@@ -3,13 +3,18 @@ import fs from 'fs';
 
 // Get network interfaces
 const interfaces = os.networkInterfaces();
-console.log(interfaces);  // Log all network interfaces to check names and details
+console.log(interfaces); // Log all network interfaces to check names and details
 
 let localIp = '';
 for (let interfaceName in interfaces) {
     // Check if interface is either Wi-Fi or Ethernet or any other name you find in the log
-    if (interfaceName === 'wlan0' || interfaceName === 'eth0' || interfaceName === 'wlp3s0' || interfaceName === 'eth0') {
-        interfaces[interfaceName].forEach(interfaceDetails => {
+    if (
+        interfaceName === 'wlan0' ||
+        interfaceName === 'eth0' ||
+        interfaceName === 'wlp3s0' ||
+        interfaceName === 'eth0'
+    ) {
+        interfaces[interfaceName].forEach((interfaceDetails) => {
             if (!interfaceDetails.internal && interfaceDetails.family === 'IPv4') {
                 localIp = interfaceDetails.address;
             }
@@ -29,7 +34,7 @@ VITE_LOCAL_API_URL=http://localhost:3000
     `;
 
     // Write the new content back to the .env file
-    fs.writeFileSync(envFile, envContent.trim());  // .trim() to remove extra newlines
+    fs.writeFileSync(envFile, envContent.trim()); // .trim() to remove extra newlines
 
     console.log(`.env file rewritten with new local IP: ${localIp}`);
 } else {
