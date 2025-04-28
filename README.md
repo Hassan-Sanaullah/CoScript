@@ -1,84 +1,157 @@
-# Turborepo starter
 
-This is an official starter Turborepo.
+---
 
-## Using this example
+# CoScript
 
-Run the following command:
+**Collaborative Real-Time Coding Platform**
 
-```sh
-npx create-turbo@latest
+CoScript is a collaborative coding platform where users can create and join workspaces, write and manage code files and folders in real-time with others. It features a code editor, workspace management, and real-time collaboration powered by WebSockets.
+
+Built with:
+- **Frontend:** React
+- **Backend:** NestJS + WebSockets
+- **Monorepo Management:** Turborepo
+- **Database:** PostgreSQL (Docker)
+
+---
+## Features
+
+- User authentication (Signup/Login) with JWT-based authorization
+- Dashboard for creating, updating, and managing workspaces
+- Join existing workspaces using an invite code
+- Real-time collaborative code editor with multi-user live updates
+- Create, edit, and delete files and folders within workspaces
+- Efficient monorepo management and caching with Turborepo
+
+---
+
+## Project Structure
+
+This monorepo contains the following applications and packages:
+
+| Name | Description |
+| :--- | :---------- |
+| `apps/api` | NestJS backend (with WebSocket support) |
+| `apps/web` | React frontend |
+
+Each package and app is fully written in **TypeScript**.
+
+---
+
+
+## Getting Started
+
+Follow these steps to set up CoScript locally:
+
+### 1. Clone the Repository
+
+```bash
+git clone <repo-url>
+cd CoScript
 ```
 
-## What's inside?
+### 2. Install Dependencies
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `api`: [NestJS](https://nestjs.com/) api
-- `web`: [React](https://react.dev/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```bash
+npm install
 ```
 
-### Develop
+> This will install all dependencies across the monorepo.
 
-To develop all apps and packages, run the following command:
+### 3. Set Up the Database
 
+Navigate to the API app:
+
+```bash
+cd apps/api
 ```
-cd my-turborepo
-pnpm dev
+
+Build and start the PostgreSQL database using Docker:
+
+```bash
+docker compose up -d
 ```
 
-### Remote Caching
+> Make sure to update the database credentials if needed by editing `docker-compose.yml` and your environment variables.
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+### 4. Generate Prisma Client
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+Still inside `apps/api`, generate the Prisma client:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
+```bash
+npx prisma generate
 ```
-cd my-turborepo
+
+### 5. Configure Environment Variables
+
+Create `.env` files for both the backend and frontend using the provided `sample.env` as reference.
+
+- For `apps/api/.env`
+- For `apps/web/.env`
+
+Make sure to correctly set database credentials, API URLs, and WebSocket URLs.
+
+### 6. Run the Development Servers
+
+At the root of the project:
+
+```bash
+npm run dev
+```
+
+This will run both the frontend and backend in development mode.
+
+---
+
+## Building for Production
+
+To build all applications and packages for production:
+
+```bash
+npm run build
+```
+
+This will:
+
+- Compile TypeScript code
+- Bundle frontend assets
+- Prepare Prisma client
+- Generate build outputs for deployment
+
+---
+
+## Remote Caching (Optional)
+
+CoScript uses **Turborepo** for task running and caching. To enable remote caching with Vercel:
+
+```bash
 npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
 npx turbo link
 ```
 
-## Useful Links
+This will allow sharing caches across CI/CD and team members for faster builds.
 
-Learn more about the power of Turborepo:
+---
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+## Learn More
+
+- [Turborepo Documentation](https://turbo.build/repo/docs)
+- [NestJS Documentation](https://docs.nestjs.com/)
+- [React Documentation](https://react.dev/)
+- [Prisma Documentation](https://www.prisma.io/docs)
+
+---
+
+# License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+# Notes
+
+- Make sure Docker is installed and running before setting up the database.
+- Ensure Node.js (v18+) and npm are installed.
+
+---
