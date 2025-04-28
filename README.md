@@ -1,5 +1,3 @@
-![CoScript Logo](./images/logo.png)
-
 ---
 
 # CoScript
