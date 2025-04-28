@@ -1,3 +1,4 @@
+![CoScript Logo](./images/logo.png)
 
 ---
 
@@ -132,7 +133,17 @@ npx turbo link
 This will allow sharing caches across CI/CD and team members for faster builds.
 
 ---
+## Screenshots
 
+Here are some screenshots of CoScript in action:
+### Homepage
+![CoScript](./images/home.png)
+
+### Dashboard
+![CoScript](./images/dashboard.png)
+
+### Code Editor
+![CoScript](./images/editor.png)
 
 ## Learn More
 
