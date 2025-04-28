@@ -1,5 +1,3 @@
----
-
 # CoScript
 
 **Collaborative Real-Time Coding Platform**
@@ -13,6 +11,7 @@ Built with:
 - **Database:** PostgreSQL (Docker)
 
 ---
+
 ## Features
 
 - User authentication (Signup/Login) with JWT-based authorization
@@ -28,8 +27,8 @@ Built with:
 
 This monorepo contains the following applications and packages:
 
-| Name | Description |
-| :--- | :---------- |
+| Name     | Description |
+| :------- | :---------- |
 | `apps/api` | NestJS backend (with WebSocket support) |
 | `apps/web` | React frontend |
 
